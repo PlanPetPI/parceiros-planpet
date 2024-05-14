@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Petshops Locais </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        input,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .results {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .petshop {
+            background-color: #f1f1f1;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Encontre Petshops Locais Parceiros Planpet</h2>
+        <input type="text" id="estado" placeholder="Estado" required>
+        <input type="text" id="cidade" placeholder="Cidade" required>
+        <input type="text" id="bairro" placeholder="Bairro" required>
+        <button onclick="buscarPetshops()">Buscar</button>
+        <div class="results" id="results"></div>
+    </div>
+
+    <script>
+        function buscarPetshops() {
+            const estado = document.getElementById('estado').value;
+            const cidade = document.getElementById('cidade').value;
+            const bairro = document.getElementById('bairro').value;
+
+            // Simulação de busca no Google e exibição dos resultados
+            const resultadosFicticios = [
+                {
+                    nome: 'Iron dog',
+                    endereco: 'Av. Cangaíba, 818',
+                    telefone: '(11)95050-3334',
+                    site: 'https://www.facebook.com/irondogpetshop/'
+                },
+                {
+                    nome: 'Casa do Pet Amigos Para Sempre',
+                    endereco: 'Av. Cangaíba, 1766 ',
+                    telefone: '(11)94448-4130',
+                    site: 'https://www.instagram.com/studiopet_amigosparasempre/'
+                }
+            ];
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+            resultadosFicticios.forEach(petshop => {
+                const petshopDiv = document.createElement('div');
+                petshopDiv.classList.add('petshop');
+                petshopDiv.innerHTML = `
+                    <h3>${petshop.nome}</h3>
+                    <p>Endereço: ${petshop.endereco}</p>
+                    <p>Telefone: ${petshop.telefone}</p>
+                    <a href="${petshop.site}" target="_blank">Visitar site</a>
+                `;
+                resultsDiv.appendChild(petshopDiv);
+            });
+        }
+    </script>
+</body>
+
+</html>
